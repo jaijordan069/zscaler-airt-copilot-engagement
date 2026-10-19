@@ -1,0 +1,17 @@
+# Office / document artifacts
+*.pdf
+*.docx
+*.xlsx
+*.pptx
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Temp and log files
+*.tmp
+*.log
+
+# Secrets and sensitive configuration
+secrets/
+.env

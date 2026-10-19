@@ -1,0 +1,29 @@
+# Zscaler AI Red Teaming — Broker Agent Docker Compose Template
+#
+# IMPORTANT: The Client Secret must be stored in a secrets manager or .env file.
+# Never commit credentials to version control.
+#
+# Obtain the exact image reference from the AI Security Portal broker
+# configuration page. The image tag below is a placeholder.
+
+version: "3.8"
+
+services:
+  zscaler-airt-broker:
+    image: zscaler/airt-broker:latest
+    # NOTE: "zscaler/airt-broker:latest" is a placeholder.
+    # Obtain the exact image reference from the AI Security Portal
+    # broker configuration page (Commands / Instructions section).
+    restart: unless-stopped
+    environment:
+      # Update OAUTH_TOKEN_URL only if required by your tenant;
+      # otherwise leave as-is per the portal instructions.
+      OAUTH_TOKEN_URL: "[FILL IN: as per your tenant]"
+
+      # Copy the Client ID from the ZIdentity API Clients list.
+      OAUTH_CLIENT_ID: "[FILL IN: Client ID copied from ZIdentity portal]"
+
+      # Copy the Client Secret immediately after creation in ZIdentity.
+      # It is shown only once. Store it in a secrets manager or .env file
+      # and reference it here — do NOT hardcode the secret value in this file.
+      OAUTH_CLIENT_SECRET: "[FILL IN: Client Secret copied from ZIdentity portal]"
